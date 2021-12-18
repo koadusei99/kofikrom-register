@@ -1,0 +1,59 @@
+:root {
+  --primary: #0277bd;
+  --primary-400: #0ea5e9;
+  --secondary: #ed7f20;
+  --secondary-400: #f97316;
+  --text-900: #111827;
+  --text-600: #4b5563;
+  --text-400: #9ca3af;
+  --x-padding: 2rem;
+  --y-padding: 2rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#app {
+  font-family: Roboto, "Courier New", Courier, monospace;
+}
+/* GLOBAL STYLES */
+.header-xl,
+.header-lg,
+.header-md,
+.header,
+.header-sm {
+  font-family: Inter;
+}
+.header-xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+.header-lg {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.header-md {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.header-sm {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --x-padding: 3rem;
+    --y-padding: 3rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --x-padding: 5rem;
+  }
+}
