@@ -25,13 +25,20 @@ const routes = [
   {
     path: "/register",
     name: "Register",
-    component: () => import(/* webpackChunkName: "form" */ "../views/Form.vue"),
+    component: () =>
+      import(/* webpackChunkName: "register" */ "../views/Form.vue"),
   },
   {
     path: "/overview",
     name: "Overview",
     component: () =>
       import(/* webpackChunkName: "overview" */ "../views/Overview.vue"),
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: () =>
+      import(/* webpackChunkName: "admin" */ "../views/Admin.vue"),
   },
   // Wildcard
   {

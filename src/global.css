@@ -2,11 +2,11 @@
   --primary: #0277bd;
   --primary-400: #0ea5e9;
   --secondary: #ed7f20;
-  --secondary-400: #f97316;
+  --secondary-400: #f97416be;
   --text-900: #111827;
   --text-600: #4b5563;
   --text-400: #9ca3af;
-  --x-padding: 2rem;
+  --x-padding: 1rem;
   --y-padding: 2rem;
 }
 * {
@@ -26,11 +26,11 @@
   font-family: Inter;
 }
 .header-xl {
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1;
 }
 .header-lg {
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 2.5rem;
 }
 .header-md {
@@ -54,6 +54,6 @@
 }
 @media screen and (min-width: 1024px) {
   :root {
-    --x-padding: 5rem;
+    --x-padding: 4rem;
   }
 }
