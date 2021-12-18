@@ -30,6 +30,6 @@ export default {
 
 <style>
 #app {
-  padding: var(--y-padding) var(--x-padding);
+  /* padding: var(--y-padding) var(--x-padding); */
 }
 </style>
