@@ -8,7 +8,7 @@
 
         <div class="header-text">
           <p id="main-p">KOFIKROM PHARMACY LTD.</p>
-          <p id="sub-p">CONFERENCE / FORUM NAME</p>
+          <p id="sub-p">{{ conference.name }}/{{ conference.slug }}</p>
         </div>
       </div>
 
@@ -18,11 +18,9 @@
             <div class="form-section">
               <label>Title</label>
               <select class="title" name="title" id="">
-                <option value="">Mr.</option>
-                <option value="">Mrs.</option>
-                <option value="">Dr.</option>
-                <option value="">Prof.</option>
-                <option value="">Pharm.</option>
+                <option v-for="title in titles" :value="title" :key="title">
+                  {{ title }}
+                </option>
               </select>
             </div>
 
@@ -66,7 +64,11 @@
             <div class="form-section-row">
               <div class="form-section">
                 <label>Profession</label>
-                <input type="text" />
+                <select name="Profession" id="profession">
+                  <option v-for="p in professions" :value="p" :key="p">
+                    {{ p }}
+                  </option>
+                </select>
               </div>
 
               <div class="form-section">
@@ -83,9 +85,10 @@
             <div class="form-section-row">
               <div class="form-section">
                 <label>Region</label>
-                <select name="gender" id="">
-                  <option value="">Ahafo</option>
-                  <option value="">Western</option>
+                <select name="region" id="">
+                  <option v-for="r in regions" :key="r" :value="r">
+                    {{ r }}
+                  </option>
                 </select>
               </div>
 
@@ -99,17 +102,17 @@
 
         <div class="sidebar">
           <div>
-            <img src="../assets/icon-viewtoggle.png" alt="toggle-view" />
+            <img src="../assets/icon-viewtoggle.svg" alt="toggle-view" />
           </div>
 
           <div>
             <router-link to="/overview"
-              ><img src="../assets/icon-overview.png" alt="overview"
+              ><img src="../assets/icon-overview.svg" alt="overview"
             /></router-link>
           </div>
 
           <div>
-            <img src="../assets/icon-refresh.png" alt="" />
+            <img src="../assets/icon-refresh.svg" alt="" />
           </div>
         </div>
       </div>
@@ -122,19 +125,24 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  name: "Form",
+  data() {
+    return {
+      formData: {},
+    };
+  },
+  computed: {
+    ...mapGetters(["conference", "professions", "titles", "regions"]),
+  },
+};
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .container {
   height: 1366px;
-  background-image: url(../assets/form-background.png);
+  background-image: url("../assets/form-background.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -148,16 +156,14 @@ export default {};
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* border: 2px solid black; */
 }
 
 .header {
   width: 749px;
-  height: 134px;
-  margin-left: 138px;
-  margin-right: 137px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .logo {
@@ -165,7 +171,6 @@ export default {};
   height: 134px;
   background: #ffffff;
   border: 5px solid #0277bd;
-  box-sizing: border-box;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -183,7 +188,6 @@ export default {};
 
 .header-text #main-p {
   font-family: Inter;
-  font-style: normal;
   font-weight: bold;
   font-size: 36px;
   color: #0277bd;
@@ -192,12 +196,12 @@ export default {};
 
 .header-text #sub-p {
   font-family: Inter;
-  font-style: normal;
   font-weight: 600;
   font-size: 18px;
   color: #f97316;
   background: #ffffff;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 5px 20px;
 }
 
 .body {
@@ -214,9 +218,8 @@ export default {};
   width: 682px;
   height: 947px;
   border: 1px solid #0277bd;
-  box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+  border-radius: 8px 0 0 8px;
   padding-top: 46px;
   padding-bottom: 47px;
   padding-left: 47.49px;
@@ -233,18 +236,16 @@ export default {};
 }
 
 .form-section-row {
-  /* margin-bottom: 40px; */
   display: flex;
   justify-content: space-between;
 }
 
 .sidebar {
-  padding-top: 10px;
+  padding: 10px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  width: 67px;
+  gap: 20px;
   height: 947px;
   background-color: #0277bd;
   box-sizing: border-box;
@@ -258,17 +259,16 @@ export default {};
 }
 
 .form-btn button {
-  width: 252.59px;
+  margin-top: 20px;
+  width: 250px;
   height: 65px;
-  background: rgba(237, 127, 32, 0.94);
+  background: var(--secondary);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-family: Inter;
-  font-style: normal;
   font-weight: 600;
   font-size: 20px;
-
   color: #ffffff;
   cursor: pointer;
 }
@@ -276,27 +276,28 @@ export default {};
 input,
 select {
   height: 48px;
-  width: 266.74px;
+  width: 265px;
   border: none;
-  background: rgba(237, 127, 32, 0.25);
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: rgba(237, 127, 32, 0.15);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding-left: 10px;
+  padding: 2px 10px;
+  font-family: Roboto;
+  font-size: 1rem;
 }
 
 .longinput {
-  width: 588.04px;
+  width: 588px;
 }
 
 .title {
-  width: 93.96px;
+  width: 95px;
 }
 
 label {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
+  font-weight: 500;
+  font-size: 18px;
   color: #000000;
 }
 </style>

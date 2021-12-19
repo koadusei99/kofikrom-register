@@ -2,9 +2,9 @@
   <div class="admin-panel">
     <div class="info">
       <p>Conference Name</p>
-      <p></p>
+      <p>{{ conference.name }}</p>
       <p>Conference Slug</p>
-      <p></p>
+      <p>{{ conference.slug }}</p>
     </div>
     <form action="">
       <div class="input-group">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: { sheet: Object },
   data() {
@@ -35,13 +36,12 @@ export default {
         this.conference.slug = value;
       },
     },
+    ...mapGetters(["conference"]),
   },
   methods: {
     submit() {},
     async setConferenceSlug() {
-      await this.sheet.loadCells("B2:B2");
-      const cell = this.sheet.getCellByA1("B2");
-      console.log(cell);
+      console.log(this.conference);
     },
   },
 };
