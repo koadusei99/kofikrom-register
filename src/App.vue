@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view :sheet="sheet" />
+    <router-link to='/preview'>Preview</router-link>
   </div>
 </template>
 
