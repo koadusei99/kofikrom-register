@@ -28,32 +28,30 @@
 
             <div class="form-section-row">
               <div class="form-section">
-              <label>First Name</label>
-              <input type="text" />
-            </div>
+                <label>First Name</label>
+                <input type="text" />
+              </div>
 
-            <div class="form-section">
-              <label>Last Name</label>
-              <input type="text" />
+              <div class="form-section">
+                <label>Last Name</label>
+                <input type="text" />
+              </div>
             </div>
-            </div>
-            
 
             <div class="form-section-row">
               <div class="form-section">
-              <label>Phone</label>
-              <input type="tel" />
-            </div>
+                <label>Phone</label>
+                <input type="tel" />
+              </div>
 
-            <div class="form-section">
-              <label>Gender</label>
-              <select name="gender" id="">
-                <option value="">Male</option>
-                <option value="">Female</option>
-              </select>
+              <div class="form-section">
+                <label>Gender</label>
+                <select name="gender" id="">
+                  <option value="">Male</option>
+                  <option value="">Female</option>
+                </select>
+              </div>
             </div>
-            </div>
-            
 
             <div class="form-section">
               <label>Email</label>
@@ -67,16 +65,15 @@
 
             <div class="form-section-row">
               <div class="form-section">
-              <label>Profession</label>
-              <input type="text" />
-            </div>
+                <label>Profession</label>
+                <input type="text" />
+              </div>
 
-            <div class="form-section">
-              <label>Specialization</label>
-              <input type="text" />
+              <div class="form-section">
+                <label>Specialization</label>
+                <input type="text" />
+              </div>
             </div>
-            </div>
-            
 
             <div class="form-section">
               <label>Address</label>
@@ -85,19 +82,18 @@
 
             <div class="form-section-row">
               <div class="form-section">
-              <label>Region</label>
-              <select name="gender" id="">
-                <option value="">Ahafo</option>
-                <option value="">Western</option>
-              </select>
-            </div>
+                <label>Region</label>
+                <select name="gender" id="">
+                  <option value="">Ahafo</option>
+                  <option value="">Western</option>
+                </select>
+              </div>
 
-            <div class="form-section">
-              <label>Country</label>
-              <input disabled type="note" placeholder="Ghana" />
+              <div class="form-section">
+                <label>Country</label>
+                <input disabled type="note" placeholder="Ghana" />
+              </div>
             </div>
-            </div>
-            
           </form>
         </div>
 
@@ -228,10 +224,8 @@ export default {};
   margin-top: 0px;
 }
 
-
 .form-section {
-    margin-bottom: 30px;
-  
+  margin-bottom: 30px;
 
   display: flex;
   flex-direction: column;
@@ -242,7 +236,6 @@ export default {};
   /* margin-bottom: 40px; */
   display: flex;
   justify-content: space-between;
-
 }
 
 .sidebar {
@@ -300,11 +293,10 @@ select {
 }
 
 label {
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 22px;
-color: #000000;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  color: #000000;
 }
-
 </style>
