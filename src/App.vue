@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <router-view :sheet="sheet" />
-    <router-link to='/preview'>Preview</router-link>
+    <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" />
   </div>
 </template>
 
@@ -9,11 +8,11 @@
 import "@/global.css";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 export default {
-  mounted() {
+  created() {
     this.authenticate();
   },
   data() {
-    return { sheet: {} };
+    return { loading: true, sheet1: {}, sheet2: {} };
   },
   methods: {
     async authenticate() {
@@ -21,16 +20,14 @@ export default {
       const doc = new GoogleSpreadsheet(process.env.VUE_APP_SHEET_ID);
       await doc.useServiceAccountAuth(creds);
       await doc.loadInfo();
-      console.log(doc);
       console.log(doc.title);
-      this.sheet = doc.sheetsByIndex[0];
+      this.sheet1 = doc.sheetsByIndex[0];
+      this.sheet2 = doc.sheetsByIndex[1];
+      await this.sheet2.loadCells("A2:H30");
+      this.loading = false;
     },
   },
 };
 </script>
 
-<style>
-#app {
-  padding: var(--y-padding) var(--x-padding);
-}
-</style>
+<style></style>
