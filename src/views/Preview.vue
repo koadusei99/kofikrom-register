@@ -1,6 +1,5 @@
 <template>
   <div class="preview-page">
-    <div class="bg"><img src="../assets/circles.svg" alt=""></div>
     <div class="preview-wrapper">
       <div class="preview-wrapper-items">
         <img src="../assets/logo1.png" alt="">
@@ -112,22 +111,24 @@ export default {};
 
 
 #app{
-  height: 100vh;
-  background: url(../assets/circles.svg);
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  width: 100%;
+  
 }
 
-.preview-page{
-  position:relative;
-  /* overflow-y: hidden; */
+.preview-page {
+  height: 100vh;
+  background-image: url(../assets/circles.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: var(--y-padding) var(--x-padding);
+  /* background-position: bottom right; */
+  /* width: 100%; */
+  
 }
 .bg{
-  position: absolute;
+  /* position: absolute;
   bottom: -168px;
   right: -80px;
-  z-index: 0;
+  z-index: 0; */
 }
   .preview-wrapper{
     padding-top: 32px;
@@ -237,3 +238,4 @@ export default {};
 }
 
 </style>
+
