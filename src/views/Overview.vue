@@ -163,7 +163,7 @@ export default {
       };
       return data;
     },
-    ...mapGetters(["regions", "regionsShort", "conference"]),
+    ...mapGetters(["regions", "conference"]),
   },
   methods: {
     async loadCells() {},
@@ -197,6 +197,7 @@ export default {
   background-image: url("../assets/overview-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 .heading {
   font-size: clamp(40px, 3vw, 48px);

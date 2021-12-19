@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    formData: {},
     regions: [
       "AHAFO",
       "ASHANTI",
@@ -23,32 +24,43 @@ export default new Vuex.Store({
       "WESTERN NORTH",
       "VOLTA",
     ],
-    regionsShort: [
-      "AH",
-      "AS",
-      "BE",
-      "BA",
-      "CE",
-      "EA",
-      "GA",
-      "NE",
-      "NO",
-      "OT",
-      "SA",
-      "UE",
-      "UW",
-      "WE",
-      "WN",
-      "VO",
+    // regionsShort: [
+    //   "AH",
+    //   "AS",
+    //   "BE",
+    //   "BA",
+    //   "CE",
+    //   "EA",
+    //   "GA",
+    //   "NE",
+    //   "NO",
+    //   "OT",
+    //   "SA",
+    //   "UE",
+    //   "UW",
+    //   "WE",
+    //   "WN",
+    //   "VO",
+    // ],
+    professions: [
+      "Doctor",
+      "Pharmacist",
+      "Software & IT",
+      "Administration",
+      "Other",
     ],
-    conference: { name: "Conference", date: new Date(), slug: "CONF" },
+    titles: ["Mr.", "Mrs", "Dr.", "Prof.", "Pharm"],
+    conference: { name: "CONF00", date: new Date(), slug: "CONF00" },
   },
   getters: {
     regions(state) {
       return state.regions;
     },
-    regionsShort(state) {
-      return state.regionsShort;
+    titles(state) {
+      return state.titles;
+    },
+    professions(state) {
+      return state.professions;
     },
     conference(state) {
       return state.conference;
