@@ -16,8 +16,8 @@
         <div class="form">
           <form action="">
             <div class="form-section">
-              <label>Title</label>
-              <select class="title" name="title" id="">
+              <label for="title">Title</label>
+              <select class="title" name="title" id="title">
                 <option v-for="title in titles" :value="title" :key="title">
                   {{ title }}
                 </option>
@@ -26,25 +26,25 @@
 
             <div class="form-section-row">
               <div class="form-section">
-                <label>First Name</label>
-                <input type="text" />
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" />
               </div>
 
               <div class="form-section">
-                <label>Last Name</label>
-                <input type="text" />
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" />
               </div>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
-                <label>Phone</label>
-                <input type="tel" />
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" />
               </div>
 
               <div class="form-section">
-                <label>Gender</label>
-                <select name="gender" id="">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
                   <option value="">Male</option>
                   <option value="">Female</option>
                 </select>
@@ -52,19 +52,20 @@
             </div>
 
             <div class="form-section">
-              <label>Email</label>
-              <input class="longinput" type="email" />
+              <label for="email">Email</label>
+              <input class="longinput" type="email" id="email" />
             </div>
 
             <div class="form-section">
-              <label>Organization / Company / Institution</label>
-              <input class="longinput" type="text" />
+              <label for="org">Organization / Company / Institution</label>
+              <input class="longinput" type="text" id="org" />
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
-                <label>Profession</label>
+                <label for="profession">Profession</label>
                 <select name="Profession" id="profession">
+                  <option value="">Select Profession</option>
                   <option v-for="p in professions" :value="p" :key="p">
                     {{ p }}
                   </option>
@@ -72,20 +73,21 @@
               </div>
 
               <div class="form-section">
-                <label>Specialization</label>
-                <input type="text" />
+                <label for="spec">Specialization</label>
+                <input type="text" id="spec" />
               </div>
             </div>
 
             <div class="form-section">
-              <label>Address</label>
-              <input class="longinput" type="text" />
+              <label for="address">Address</label>
+              <input class="longinput" type="text" id="address" />
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
-                <label>Region</label>
-                <select name="region" id="">
+                <label for="region">Region</label>
+                <select name="region" id="region">
+                  <option value="">Select Region</option>
                   <option v-for="r in regions" :key="r" :value="r">
                     {{ r }}
                   </option>
@@ -93,8 +95,8 @@
               </div>
 
               <div class="form-section">
-                <label>Country</label>
-                <input disabled type="note" placeholder="Ghana" />
+                <label for="country">Country</label>
+                <input disabled type="text" placeholder="Ghana" id="country" />
               </div>
             </div>
           </form>
@@ -112,7 +114,7 @@
           </div>
 
           <div>
-            <img src="../assets/icon-refresh.svg" alt="" />
+            <img src="../assets/icon-refresh.svg" alt="refresh" />
           </div>
         </div>
       </div>
@@ -146,7 +148,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  align-items: center;
+  padding: var(--y-padding) var(--x-padding);
   justify-content: space-around;
 }
 
@@ -163,7 +165,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .logo {
