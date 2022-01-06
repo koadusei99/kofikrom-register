@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" />
+    <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" :adminSheet="sheet3" />
     <div class="bottom-nav"><Navi /></div>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     this.authenticate();
   },
   data() {
-    return { loading: true, sheet1: {}, sheet2: {} };
+    return { loading: true, sheet1: {}, sheet2: {}, sheet3: {}};
   },
   methods: {
     async authenticate() {
