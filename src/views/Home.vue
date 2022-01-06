@@ -5,7 +5,9 @@
         <img src="../assets/logo.png" alt="logo" />
       </div>
 
-      <div class="forumname"><p>Conference / Forum Name {{}}</p></div>
+      <div class="forumname">
+        <p>{{ conference.name }} / {{ conference.slug }}</p>
+      </div>
 
       <router-link class="link" to="/register"
         ><button id="btn1">Register</button></router-link
@@ -18,9 +20,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {},
+  computed: {
+    ...mapGetters(["conference"]),
+  },
 };
 </script>
 

@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" />
+    <div class="bottom-nav"><Navi /></div>
   </div>
 </template>
 
 <script>
 import "@/global.css";
 import { GoogleSpreadsheet } from "google-spreadsheet";
+import Navi from "./components/Navi.vue";
 export default {
+  components: { Navi },
   created() {
     this.authenticate();
   },
@@ -32,4 +35,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#app {
+  position: relative;
+}
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+</style>
