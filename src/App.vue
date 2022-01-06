@@ -23,7 +23,9 @@ export default {
       console.log(doc.title);
       this.sheet1 = doc.sheetsByIndex[0];
       this.sheet2 = doc.sheetsByIndex[1];
+      this.sheet3 = doc.sheetsByIndex[2];
       await this.sheet2.loadCells("A2:H30");
+      await this.sheet3.loadCells("A1:C1");
       this.loading = false;
     },
   },
