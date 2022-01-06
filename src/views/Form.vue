@@ -17,7 +17,7 @@
           <form action="">
             <div class="form-section">
               <label for="title">Title</label>
-              <select class="title" name="title" id="title" v-model="formData.title">
+              <select class="title" name="title" id="title" v-model="formData.Title">
                 <option v-for="title in titles" :value="title" :key="title">
                   {{ title }}
                 </option>
@@ -27,24 +27,24 @@
             <div class="form-section-row">
               <div class="form-section">
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" v-model="formData.firstname"/>
+                <input type="text" id="fname" v-model="formData.FirstName"/>
               </div>
 
               <div class="form-section">
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" v-model="formData.lastname"/>
+                <input type="text" id="lname" v-model="formData.LastName"/>
               </div>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" v-model="formData.phone"/>
+                <input type="tel" id="phone" v-model="formData.Phone"/>
               </div>
 
               <div class="form-section">
                 <label for="gender">Gender</label>
-                <select name="gender" id="gender" v-model="formData.gender">
+                <select name="gender" id="gender" v-model="formData.Gender">
                   <option value="m">Male</option>
                   <option value="f">Female</option>
                 </select>
@@ -53,18 +53,18 @@
 
             <div class="form-section">
               <label for="email">Email</label>
-              <input class="longinput" type="email" id="email" v-model="formData.email"/>
+              <input class="longinput" type="email" id="email" v-model="formData.Email"/>
             </div>
 
             <div class="form-section">
               <label for="org">Organization / Company / Institution</label>
-              <input class="longinput" type="text" id="org" v-model="formData.company"/>
+              <input class="longinput" type="text" id="org" v-model="formData.Organization"/>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
                 <label for="profession">Profession</label>
-                <select name="Profession" id="profession" v-model="formData.profession">
+                <select name="Profession" id="profession" v-model="formData.Profession">
                   <option value="">Select Profession</option>
                   <option v-for="p in professions" :value="p" :key="p">
                     {{ p }}
@@ -74,19 +74,19 @@
 
               <div class="form-section">
                 <label for="spec">Specialization</label>
-                <input type="text" id="spec" v-model="formData.specialization"/>
+                <input type="text" id="spec" v-model="formData.Specialization"/>
               </div>
             </div>
 
             <div class="form-section">
               <label for="address">Address</label>
-              <input class="longinput" type="text" id="address" v-model="formData.address"/>
+              <input class="longinput" type="text" id="address" v-model="formData.Address"/>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
                 <label for="region">Region</label>
-                <select name="region" id="region" v-model="formData.region">
+                <select name="region" id="region" v-model="formData.Region">
                   <option value="">Select Region</option>
                   <option v-for="r in regions" :key="r" :value="r">
                     {{ r }}
@@ -120,26 +120,40 @@
       </div>
 
       <div class="form-btn">
-        <button>Submit</button>
+        <button @click="submit">Submit</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Form",
+  props: { entriesSheet: Object },
   data() {
     return {
       formData: {
-        country: 'Ghana'
+        Country: 'Ghana',
+       
       },
     };
   },
   computed: {
     ...mapGetters(["conference", "professions", "titles", "regions"]),
   },
+  methods: {
+    ...mapActions(["submitFormData"]),
+    async submit(){
+      this.formData.Conference = this.conference.name
+      this.formData.Slug = this.conference.slug
+      this.submitFormData(this.formData)
+      const submitted = await this.entriesSheet.addRow(this.formData);
+       
+      console.log(submitted)
+      console.log(this.formData)
+    }
+  }
 };
 </script>
 

@@ -19,20 +19,20 @@
 
       <div class="card-wrapper">
         <div class="card">
-          <div class="name">name</div>
-          <div class="company">Company</div>
-          <div class="role">Role</div>
+          <div class="name">name: <span>{{submission.FirstName + ' '+ submission.LastName}}</span></div>
+          <div class="company">Company: <span>{{submission.Organization}}</span></div>
+          <div class="role">Profession: <span>{{submission.Profession}}</span></div>
           <figure class="company-logo"><img src="../assets/logo-small.png" alt=""></figure>
         </div>
       </div>
 
       <div class="buttons">
 
-        <div class="confirm-wrapper"><button class="confirm-wrapper">Register</button></div>
+       <router-link to='/register'><div class="confirm-wrapper"><button class="confirm-wrapper">Register</button></div></router-link>
 
-        <div class="confirm-wrapper"><button class="confirm-wrapper">Print</button></div>
+        <router-link to='#'><div class="confirm-wrapper"><button class="confirm-wrapper">Print</button></div></router-link>
 
-        <div class="confirm-wrapper"><button class="confirm-wrapper">Overview</button></div>        
+        <router-link to='/overview'><div class="confirm-wrapper"><button class="confirm-wrapper">Overview</button></div> </router-link>      
       </div>
 
 
@@ -103,7 +103,14 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["conference", "professions", "titles", "regions", "submission"]),
+  }
+};
+
+ 
 </script>
 
 <style scoped>

@@ -65,16 +65,26 @@ export default new Vuex.Store({
     conference(state) {
       return state.conference;
     },
+    submission(state){
+      return state.formData
+    }
   },
   mutations: {
     SET_CONFERENCE(state, payload) {
       state.conference = payload;
     },
+    SET_DATA(state,payload){
+      state.formData = payload
+    }
   },
   actions: {
     submitConference({ commit }, payload) {
       commit("SET_CONFERENCE", payload);
     },
+
+    submitFormData({ commit }, payload) {
+      commit("SET_DATA", payload);
+    }
   },
   modules: {},
 });
