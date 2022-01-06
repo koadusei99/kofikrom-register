@@ -2,49 +2,61 @@
   <div class="main">
     <div class="header-text">
       <h2 class="heading">Overview</h2>
-      <h3 class="heading2">{{ conference.name }}</h3>
+      <h3 class="heading2">{{ conference.name }}/{{ conference.slug }}</h3>
     </div>
     <div class="cards">
       <div class="card">
         <p class="value">{{ participants }}</p>
         <div class="btm">
           <h4 class="title">Participants</h4>
-          <span class="icon"><img src="../assets/people.svg" alt="" /></span>
+          <span class="icon">
+            <img src="../assets/people.svg" alt />
+          </span>
         </div>
       </div>
       <div class="card">
         <p class="value">{{ males }}</p>
         <div class="btm">
           <h4 class="title">Males</h4>
-          <span class="icon"><img src="../assets/male.svg" alt="" /></span>
+          <span class="icon">
+            <img src="../assets/male.svg" alt />
+          </span>
         </div>
       </div>
       <div class="card">
         <p class="value">{{ females }}</p>
         <div class="btm">
           <h4 class="title">Females</h4>
-          <span class="icon"><img src="../assets/female.svg" alt="" /></span>
+          <span class="icon">
+            <img src="../assets/female.svg" alt />
+          </span>
         </div>
       </div>
       <div class="card">
         <p class="value">{{ regionCount }}</p>
         <div class="btm">
           <h4 class="title">Regions</h4>
-          <span class="icon"><img src="../assets/globe.svg" alt="" /></span>
+          <span class="icon">
+            <img src="../assets/globe.svg" alt />
+          </span>
         </div>
       </div>
       <div class="card">
         <p class="value">{{ participants }}</p>
         <div class="btm">
           <h4 class="title">Emails</h4>
-          <span class="icon"><img src="../assets/mail.svg" alt="" /></span>
+          <span class="icon">
+            <img src="../assets/mail.svg" alt />
+          </span>
         </div>
       </div>
       <div class="card">
         <p class="value">{{ organizations }}</p>
         <div class="btm">
           <h4 class="title">Organizations</h4>
-          <span class="icon"><img src="../assets/building.svg" alt="" /></span>
+          <span class="icon">
+            <img src="../assets/building.svg" alt />
+          </span>
         </div>
       </div>
       <div class="card dom">
@@ -166,11 +178,6 @@ export default {
     ...mapGetters(["regions", "conference"]),
   },
   methods: {
-    async loadCells() {},
-    async setSlug() {
-      let slug = this.sheet.getCellByA1("C2");
-      console.log(slug.value);
-    },
     renderChart() {
       const ctx = document.getElementById("chart");
       new Chart(ctx, {
@@ -193,11 +200,11 @@ export default {
 
 <style scoped>
 .main {
-  padding: var(--y-padding) var(--x-padding);
+  padding: var(--y-padding) var(--x-padding) 8rem;
   background-image: url("../assets/overview-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
 }
 .heading {
   font-size: clamp(40px, 3vw, 48px);

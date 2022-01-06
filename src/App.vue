@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" />
-    <div class="bottom-nav"><Navi /></div>
+    <div class="bottom-nav">
+      <Navi />
+    </div>
   </div>
 </template>
 
@@ -23,7 +25,6 @@ export default {
       const doc = new GoogleSpreadsheet(process.env.VUE_APP_SHEET_ID);
       await doc.useServiceAccountAuth(creds);
       await doc.loadInfo();
-      console.log(doc.title);
       this.sheet1 = doc.sheetsByIndex[0];
       this.sheet2 = doc.sheetsByIndex[1];
       await this.sheet2.loadCells("A2:H30");

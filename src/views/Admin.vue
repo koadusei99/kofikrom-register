@@ -11,23 +11,21 @@
         <p class="txt">{{ conference.slug }}</p>
       </div>
     </div>
-    <form action="" class="card form">
+    <form action class="card form">
       <div class="input-group pass">
         <label for="password">Password</label>
         <input type="password" v-model="password" @input="authn" />
       </div>
       <div v-if="auth" class="snik">
         <div class="input-group">
-          <label for="">Conference Name</label>
+          <label for>Conference Name</label>
           <input type="text" v-model="newConf.name" :disabled="!auth" />
         </div>
         <div class="input-group">
-          <label for="">Conference Slug</label>
+          <label for>Conference Slug</label>
           <input type="text" v-model="slug" :disabled="!auth" />
         </div>
-        <button @click.prevent="setConferenceSlug" :disabled="!auth">
-          Initialize
-        </button>
+        <button @click.prevent="setConferenceSlug" :disabled="!auth">Initialize</button>
       </div>
     </form>
   </div>
@@ -61,7 +59,7 @@ export default {
     ...mapGetters(["conference"]),
   },
   methods: {
-    submit() {},
+    submit() { },
     async setConferenceSlug() {
       this.newConf.date = new Date().toDateString();
       // set slug on sheet
@@ -92,12 +90,13 @@ export default {
   font-weight: 700;
 }
 .admin-panel {
-  padding: var(--y-padding) var(--x-padding);
+  padding: var(--y-padding) var(--x-padding) 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 50px;
   font-family: Inter;
+  height: auto;
 }
 .heading2 {
   font-size: clamp(28px, 2.2vw, 40px);
