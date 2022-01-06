@@ -17,7 +17,7 @@
           <form action="">
             <div class="form-section">
               <label for="title">Title</label>
-              <select class="title" name="title" id="title">
+              <select class="title" name="title" id="title" v-model="formData.title">
                 <option v-for="title in titles" :value="title" :key="title">
                   {{ title }}
                 </option>
@@ -27,44 +27,44 @@
             <div class="form-section-row">
               <div class="form-section">
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" />
+                <input type="text" id="fname" v-model="formData.firstname"/>
               </div>
 
               <div class="form-section">
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" />
+                <input type="text" id="lname" v-model="formData.lastname"/>
               </div>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" />
+                <input type="tel" id="phone" v-model="formData.phone"/>
               </div>
 
               <div class="form-section">
                 <label for="gender">Gender</label>
-                <select name="gender" id="gender">
-                  <option value="">Male</option>
-                  <option value="">Female</option>
+                <select name="gender" id="gender" v-model="formData.gender">
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
                 </select>
               </div>
             </div>
 
             <div class="form-section">
               <label for="email">Email</label>
-              <input class="longinput" type="email" id="email" />
+              <input class="longinput" type="email" id="email" v-model="formData.email"/>
             </div>
 
             <div class="form-section">
               <label for="org">Organization / Company / Institution</label>
-              <input class="longinput" type="text" id="org" />
+              <input class="longinput" type="text" id="org" v-model="formData.company"/>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
                 <label for="profession">Profession</label>
-                <select name="Profession" id="profession">
+                <select name="Profession" id="profession" v-model="formData.profession">
                   <option value="">Select Profession</option>
                   <option v-for="p in professions" :value="p" :key="p">
                     {{ p }}
@@ -74,19 +74,19 @@
 
               <div class="form-section">
                 <label for="spec">Specialization</label>
-                <input type="text" id="spec" />
+                <input type="text" id="spec" v-model="formData.specialization"/>
               </div>
             </div>
 
             <div class="form-section">
               <label for="address">Address</label>
-              <input class="longinput" type="text" id="address" />
+              <input class="longinput" type="text" id="address" v-model="formData.address"/>
             </div>
 
             <div class="form-section-row">
               <div class="form-section">
                 <label for="region">Region</label>
-                <select name="region" id="region">
+                <select name="region" id="region" v-model="formData.region">
                   <option value="">Select Region</option>
                   <option v-for="r in regions" :key="r" :value="r">
                     {{ r }}
@@ -132,7 +132,9 @@ export default {
   name: "Form",
   data() {
     return {
-      formData: {},
+      formData: {
+        country: 'Ghana'
+      },
     };
   },
   computed: {
