@@ -35,7 +35,7 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Admin",
-  props: { statsSheet: Object },
+  props: { statsSheet: Object, adminSheet: Object },
   data() {
     return {
       newConf: { name: "", slug: "", date: "" },
@@ -73,8 +73,8 @@ export default {
     },
     ...mapActions(["submitConference"]),
     authn() {
-      const e9 = this.statsSheet.getCellByA1("E9");
-      if (this.password === e9.value) {
+      const b1 = this.adminSheet.getCellByA1("B1");
+      if (this.password === b1.value) {
         this.auth = true;
       } else {
         this.auth = false;
