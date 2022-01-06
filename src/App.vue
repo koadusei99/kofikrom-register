@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" :adminSheet="sheet3" />
-    <div class="bottom-nav"><Navi /></div>
+    <div class="bottom-nav">
+      <Navi />
+    </div>
   </div>
 </template>
 
@@ -15,7 +17,7 @@ export default {
     this.authenticate();
   },
   data() {
-    return { loading: true, sheet1: {}, sheet2: {}, sheet3: {}};
+    return { loading: true, sheet1: {}, sheet2: {}, sheet3: {} };
   },
   methods: {
     async authenticate() {
@@ -23,7 +25,6 @@ export default {
       const doc = new GoogleSpreadsheet(process.env.VUE_APP_SHEET_ID);
       await doc.useServiceAccountAuth(creds);
       await doc.loadInfo();
-      console.log(doc.title);
       this.sheet1 = doc.sheetsByIndex[0];
       this.sheet2 = doc.sheetsByIndex[1];
       this.sheet3 = doc.sheetsByIndex[2];
