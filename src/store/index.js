@@ -51,6 +51,7 @@ export default new Vuex.Store({
       "Pharmacist",
       "Software & IT",
       "Administration",
+      "Marketing",
       "Other",
     ],
     titles: ["Mr.", "Mrs", "Dr.", "Prof.", "Pharm"],
@@ -69,17 +70,17 @@ export default new Vuex.Store({
     conference(state) {
       return state.conference;
     },
-    submission(state){
-      return state.formData
-    }
+    submission(state) {
+      return state.formData;
+    },
   },
   mutations: {
     SET_CONFERENCE(state, payload) {
       state.conference = payload;
     },
-    SET_DATA(state,payload){
-      state.formData = payload
-    }
+    SET_DATA(state, payload) {
+      state.formData = payload;
+    },
   },
   actions: {
     submitConference({ commit }, payload) {
@@ -88,7 +89,7 @@ export default new Vuex.Store({
 
     submitFormData({ commit }, payload) {
       commit("SET_DATA", payload);
-    }
+    },
   },
   modules: {},
   plugins: [vuexLocal.plugin],
