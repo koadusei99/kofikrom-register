@@ -159,18 +159,28 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Form",
   props: { entriesSheet: Object },
+  mounted() {
+    this.populate();
+  },
   data() {
     return {
-      formData: {
-        Country: "Ghana",
-      },
+      formData: {},
     };
   },
   computed: {
-    ...mapGetters(["conference", "professions", "titles", "regions"]),
+    ...mapGetters([
+      "conference",
+      "professions",
+      "titles",
+      "regions",
+      "submission",
+    ]),
   },
   methods: {
     ...mapActions(["submitFormData"]),
+    populate() {
+      this.formData = this.submission;
+    },
 
     async submit() {
       this.formData.Conference = this.conference.name;

@@ -32,15 +32,18 @@
       </div>
     </div>
     <div class="btns">
-      <button class="btn prim-btn">
+      <button class="btn prim-btn" @click="submit">
         <span><img src="../assets/line-md_confirm-circle.svg" alt="" /></span
         ><span>Confirm</span>
       </button>
-      <button class="btn sec-btn">
+      <button class="btn sec-btn" @click="$router.push({ name: 'Register' })">
         <span><img src="../assets/akar-icons_edit.svg" alt="" /></span
         ><span>Edit</span>
       </button>
-      <button class="btn orange-btn">
+      <button
+        class="btn orange-btn"
+        @click="$router.push({ name: 'Overview' })"
+      >
         <span><img src="../assets/gridicons_stats.svg" alt="" /></span
         ><span>Overview</span>
       </button>
@@ -216,6 +219,7 @@ export default {
     font-size: 20px;
     font-weight: 600;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
   }
   .sec-btn {
     border: 1px solid var(--primary);
