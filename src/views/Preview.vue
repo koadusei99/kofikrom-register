@@ -117,8 +117,15 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Preview",
+  props: { entriesSheet: Object },
   computed: {
     ...mapGetters(["submission"]),
+  },
+  methods: {
+    async submit() {
+      const submitted = await this.entriesSheet.addRow(this.submission);
+      console.log(submitted);
+    },
   },
 };
 </script>
