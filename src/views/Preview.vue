@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Preview",
   props: { entriesSheet: Object },
@@ -122,9 +122,17 @@ export default {
     ...mapGetters(["submission"]),
   },
   methods: {
+    ...mapActions(["submitFormData"]),
     async submit() {
-      const submitted = await this.entriesSheet.addRow(this.submission);
-      console.log(submitted);
+      try {
+        const submitted = await this.entriesSheet.addRow(this.submission);
+        console.log(submitted);
+        alert("Your submission has been sent");
+        this.submitFormData({ Country: "Ghana" });
+        this.$router.push({ name: "Home" });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
