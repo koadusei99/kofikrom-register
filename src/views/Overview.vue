@@ -83,6 +83,7 @@ import Chart from "chart.js/auto";
 
 export default {
   mounted() {
+    this.fetchOverview();
     this.renderChart();
   },
   name: "Overview",
@@ -193,6 +194,9 @@ export default {
           },
         },
       });
+    },
+    fetchOverview() {
+      this.statsSheet.loadCells("A2:H30");
     },
   },
 };
