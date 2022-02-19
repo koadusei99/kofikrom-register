@@ -75,8 +75,8 @@
           <div class="rt">
             <div class="ig">
               <p class="lbl">Sex</p>
-              <p class="data">
-                {{ submission.Gender === "m" ? "Male" : "Female" }}
+              <p class="data gender">
+                {{ submission.Gender }}
               </p>
             </div>
             <div class="ig">
@@ -293,6 +293,9 @@ export default {
   .btm {
     display: grid;
     grid-auto-flow: column;
+  }
+  .gender {
+    text-transform: capitalize;
   }
 }
 </style>

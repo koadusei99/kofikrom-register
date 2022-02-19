@@ -50,8 +50,8 @@
               <div class="form-section">
                 <label for="gender">Gender</label>
                 <select name="gender" id="gender" v-model="formData.Gender">
-                  <option value="m">Male</option>
-                  <option value="f">Female</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </select>
               </div>
             </div>
