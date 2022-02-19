@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view v-if="!loading" :entriesSheet="sheet1" :statsSheet="sheet2" :adminSheet="sheet3" />
+    <router-view
+      v-if="!loading"
+      :entriesSheet="sheet1"
+      :statsSheet="sheet2"
+      :adminSheet="sheet3"
+    />
     <div class="bottom-nav">
       <Navi />
     </div>
@@ -21,9 +26,11 @@ export default {
   },
   methods: {
     async authenticate() {
-      const creds = require("../cred.json");
       const doc = new GoogleSpreadsheet(process.env.VUE_APP_SHEET_ID);
-      await doc.useServiceAccountAuth(creds);
+      await doc.useServiceAccountAuth({
+        client_email: process.env.VUE_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.VUE_APP_GOOGLE_PRIVATE_KEY,
+      });
       await doc.loadInfo();
       this.sheet1 = doc.sheetsByIndex[0];
       this.sheet2 = doc.sheetsByIndex[1];

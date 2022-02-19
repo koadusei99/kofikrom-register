@@ -1,248 +1,316 @@
 <template>
-  <div class="preview-page">
-    <div class="preview-wrapper">
-      <div class="preview-wrapper-items">
-        <img src="../assets/logo1.png" alt="">
-      </div>
-
-      <div class="preview-wrapper-items">
-        <div class="appreciation">
-          <div class="done">
-            <img src="../assets/reg.svg" alt="">
+  <section class="main">
+    <img class="logo" src="../assets/logo1.png" width="134" alt="Logo" />
+    <div class="bus-card">
+      <div class="grd">
+        <div class="left">
+          <div class="brand">
+            <img src="../assets/logo-no-brand.png" height="60" alt="" />
           </div>
-          <div class="text">
-            Thank you for registering
+          <div class="brand-name"><p>KOFIKROM</p></div>
+        </div>
+        <div class="bar"></div>
+        <div class="right">
+          <div class="mdet">
+            <p class="lg">
+              {{ submission.FirstName }} {{ submission.LastName }}
+            </p>
+            <p class="md">{{ submission.Specialization }}</p>
+            <p class="md">{{ submission.Organization }}</p>
+          </div>
+          <div class="cont">
+            <p class="light">
+              <span
+                ><img src="../assets/ic_baseline-alternate-email.svg" alt=""
+              /></span>
+              {{ submission.Email }}
+            </p>
+            <p class="light">
+              <span><img src="../assets/akar-icons_phone.svg" alt="" /></span>
+              {{ submission.Phone }}
+            </p>
           </div>
         </div>
-
-      </div>
-
-      <div class="card-wrapper">
-        <div class="card">
-          <div class="name">name: <span>{{submission.FirstName + ' '+ submission.LastName}}</span></div>
-          <div class="company">Company: <span>{{submission.Organization}}</span></div>
-          <div class="role">Profession: <span>{{submission.Profession}}</span></div>
-          <figure class="company-logo"><img src="../assets/logo-small.png" alt=""></figure>
-        </div>
-      </div>
-
-      <div class="buttons">
-
-       <router-link to='/register'><div class="confirm-wrapper"><button class="confirm-wrapper">Register</button></div></router-link>
-
-        <router-link to='#'><div class="confirm-wrapper"><button class="confirm-wrapper">Print</button></div></router-link>
-
-        <router-link to='/overview'><div class="confirm-wrapper"><button class="confirm-wrapper">Overview</button></div> </router-link>      
-      </div>
-
-
-      <div id="display-preview">
-        <div class="output">
-          <div class="text-wrapper">
-            <div class="title">Name :</div>
-            <div class="display"></div>
-          </div>
-
-          <div class="text-wrapper">
-            <div class="title">Email :</div>
-            <div class="display"></div>
-          </div>
-        </div>
-
-         <div class="output">
-          <div class="text-wrapper">
-            <div class="title">Gender :</div>
-            <div class="display"></div>
-          </div>
-
-          <div class="text-wrapper">
-            <div class="title">Phone :</div>
-            <div class="display"></div>
-          </div>
-        </div>
-
-        <div class="text-wrapper  one">
-            <div class="title">Organization/Company/Institution :</div>
-            <div class="display org"></div>
-          </div>
-
-          
-         <div class="output">
-          <div class="text-wrapper">
-            <div class="title">Profession :</div>
-            <div class="display"></div>
-          </div>
-
-          <div class="text-wrapper">
-            <div class="title">Specialization :</div>
-            <div class="display"></div>
-          </div>
-        </div>
-
-        <div class="text-wrapper  one">
-            <div class="title">Address :</div>
-            <div class="display"></div>
-          </div>
-
-             
-         <div class="output">
-          <div class="text-wrapper">
-            <div class="title">Country :</div>
-            <div class="display"></div>
-          </div>
-
-          <div class="text-wrapper">
-            <div class="title">Region :</div>
-            <div class="display"></div>
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
+    <div class="btns">
+      <button class="btn prim-btn" @click="submit" :disabled="submitting">
+        <span><img src="../assets/line-md_confirm-circle.svg" alt="" /></span
+        ><span>{{ submitting ? "Sending..." : "Confirm" }}</span>
+      </button>
+      <button class="btn sec-btn" @click="$router.push({ name: 'Register' })">
+        <span><img src="../assets/akar-icons_edit.svg" alt="" /></span
+        ><span>Edit</span>
+      </button>
+      <button
+        class="btn orange-btn"
+        @click="$router.push({ name: 'Overview' })"
+      >
+        <span><img src="../assets/gridicons_stats.svg" alt="" /></span
+        ><span>Overview</span>
+      </button>
+    </div>
+    <div class="preview-card">
+      <h2>Review your submission</h2>
+      <div class="cntnt">
+        <div class="top">
+          <div class="lt">
+            <div class="ig">
+              <p class="lbl">Name</p>
+              <p class="data">
+                {{ submission.FirstName }} {{ submission.LastName }}
+              </p>
+            </div>
+            <div class="ig">
+              <p class="lbl">Phone</p>
+              <p class="data">
+                {{ submission.Phone }}
+              </p>
+            </div>
+            <div class="ig">
+              <p class="lbl">Address</p>
+              <p class="data">
+                {{ submission.Address }}, {{ submission.Region }}
+              </p>
+            </div>
+          </div>
+          <div class="rt">
+            <div class="ig">
+              <p class="lbl">Sex</p>
+              <p class="data gender">
+                {{ submission.Gender }}
+              </p>
+            </div>
+            <div class="ig">
+              <p class="lbl">Email</p>
+              <p class="data">
+                {{ submission.Email }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="btm">
+          <div class="ig">
+            <p class="lbl">Profession</p>
+            <p class="data">
+              {{ submission.Profession }}
+            </p>
+          </div>
+          <div class="ig">
+            <p class="lbl">Specialization</p>
+            <p class="data">
+              {{ submission.Specialization }}
+            </p>
+          </div>
+          <div class="ig">
+            <p class="lbl">Organization</p>
+            <p class="data">
+              {{ submission.Organization }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import { Notyf } from "notyf";
 export default {
+  name: "Preview",
+  props: { entriesSheet: Object },
+  data() {
+    return { submitting: false };
+  },
   computed: {
-    ...mapGetters(["conference", "professions", "titles", "regions", "submission"]),
-  }
+    ...mapGetters(["submission"]),
+  },
+  methods: {
+    ...mapActions(["submitFormData"]),
+    async submit() {
+      this.submitting = true;
+      try {
+        const submitted = await this.entriesSheet.addRow(this.submission);
+        if (submitted) {
+          const notyf = new Notyf();
+          notyf.success("Submission sent");
+        }
+        this.submitFormData({ Country: "Ghana" });
+        this.$router.push({ name: "Home" });
+      } catch (error) {
+        console.log(error);
+      }
+      this.submitting = false;
+    },
+  },
 };
-
- 
 </script>
 
 <style scoped>
-@media  screen and (min-width: 1024px) {
-
-
-#app{
-  
-}
-
-.preview-page {
-  height: 100vh;
-  background-image: url(../assets/circles.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: var(--y-padding) var(--x-padding);
-  /* background-position: bottom right; */
-  /* width: 100%; */
-  
-}
-.bg{
-  /* position: absolute;
-  bottom: -168px;
-  right: -80px;
-  z-index: 0; */
-}
-  .preview-wrapper{
-    padding-top: 32px;
-  }
-  .preview-wrapper-items{
+@media screen and (min-width: 1024px) {
+  .cont {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
   }
-  .text{
-    font-size: 36px;
-  line-height: 42px;
-
-  color: #ED7F20;
+  .main {
+    padding: var(--y-padding) var(--x-padding) 8rem;
+    min-height: 100vh;
+    font-family: Inter;
   }
-  .appreciation{
-    display: flex;
-    /* height: 100px; */
-    gap: 24px;
-    align-items: center;
-    margin-top: 96px;
+  .logo {
+    display: block;
+    margin: 0 auto;
   }
-  .card-wrapper{
-    border: 4px solid #ED7F20;
-    box-sizing: border-box;
-    border-radius: 32px;
-    height: 216px;
-    margin-top: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card{
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 26px;
-    width: 291px;
-    height: 156px;
-    padding: 32px 32px;
-    
-  }
-  .card div{
-    margin-bottom: 5px;
-  }
-  .company-logo{
-   display: flex;
-   justify-content: right;
-    
-  }
-  .buttons{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 30px;
-  }
-
-  .confirm-wrapper{
-    background: #5F8EEA;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  .bus-card {
+    width: 600px;
+    margin-top: 60px;
+    margin-inline: auto;
+    border: 1px solid rgba(2, 119, 189, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    width: 146px;
-    height: 60px;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    color: #FFFFFF;
-    border: none;
+    height: 300px;
+    background-image: url("../assets/card-bg.svg");
   }
-  #display-preview{
-    padding: 32px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 32px;
-    margin-top: 64px;
-    background-color: white;
-    z-index: 10;
-    position: relative;
-    /* overflow-y: hidden; */
-  }
-  .display{
-    width: 200px;
-    height: 32px;
-    /* border: 1px solid black; */
-    border-radius: 8px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  .text-wrapper{
+  .grd {
+    height: 100%;
     display: flex;
-    gap: 32px;
-    /* height: 50px; */
+    align-items: center;
+    margin-inline: auto;
+    width: fit-content;
+  }
+  .bus-card .left {
+    display: flex;
     align-items: center;
   }
-  .title{
-    font-size: 24px;
-    line-height: 28px;
-    text-transform: capitalize;
+  .bus-card .right {
+    text-transform: uppercase;
   }
-  .output{
+  .left {
+    padding-right: 35px;
+  }
+  .right {
+    padding-left: 35px;
+  }
+  .brand {
+    margin-right: 15px;
+  }
+  .brand-name {
+    display: grid;
+    place-items: center;
+    height: 80px;
+    border-left: 2px solid var(--primary);
+  }
+  .brand-name p {
+    margin-left: 15px;
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .lg {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .md {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .light {
+    font-size: 12px;
+    color: #4b5563;
+  }
+  .bar {
+    height: 250px;
+    border: 1px solid rgba(2, 119, 189, 0.3);
+    border-radius: 50px;
+    filter: blur(1px);
+    width: fit-content;
+  }
+  .mdet {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 15px;
+  }
+  .btns {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 32px;
+    max-width: 600px;
+    margin: 30px auto;
   }
-  .one{
-    margin-bottom: 32px;
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
   }
-  .org{
-    width: 390px;
+  .sec-btn {
+    border: 1px solid var(--primary);
+  }
+  .orange-btn {
+    background-color: white;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+  }
+
+  .preview-card {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 2rem 1rem;
+  }
+  .preview-card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .ig {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lbl {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .data {
+    font-size: 18px;
+    padding: 12px 20px;
+    background-color: rgba(2, 119, 189, 0.05);
+    width: fit-content;
+    border-radius: 8px;
+  }
+  .cntnt {
+    max-width: 700px;
+    margin-inline: auto;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+  }
+  .lt,
+  .rt {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  hr {
+    margin-block: 2rem;
+    color: rgba(2, 119, 189, 0.4);
+  }
+  .btm {
+    display: grid;
+    grid-auto-flow: column;
+  }
+  .gender {
+    text-transform: capitalize;
   }
 }
-
 </style>
-

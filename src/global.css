@@ -1,5 +1,6 @@
 :root {
   --primary: #0277bd;
+  --primaryC: 2 119 189;
   --primary-400: #0ea5e9;
   --secondary: #ed7f20;
   --secondary-400: #f97416be;
@@ -45,6 +46,18 @@ body {
 .header-sm {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.btn {
+  border: none;
+  font-family: Inter;
+}
+.prim-btn {
+  background-color: var(--primary);
+  color: white;
+}
+.sec-btn {
+  background-color: white;
+  color: var(--primary);
 }
 
 @media screen and (min-width: 768px) {
