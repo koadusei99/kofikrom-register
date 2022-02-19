@@ -141,14 +141,14 @@
             /></router-link>
           </div>
 
-          <div>
+          <div @click="resetForm" class="reset">
             <img src="../assets/icon-refresh.svg" alt="refresh" />
           </div>
         </div>
       </div>
 
       <div class="form-btn">
-        <button @click="submit">Submit</button>
+        <button @click="submit">Proceed</button>
       </div>
     </div>
   </div>
@@ -164,7 +164,9 @@ export default {
   },
   data() {
     return {
-      formData: {},
+      formData: {
+        Country: "Ghana",
+      },
     };
   },
   computed: {
@@ -181,15 +183,13 @@ export default {
     populate() {
       this.formData = this.submission;
     },
-
+    resetForm() {
+      this.formData = {};
+    },
     async submit() {
       this.formData.Conference = this.conference.name;
       this.formData.Slug = this.conference.slug;
       this.submitFormData(this.formData);
-      // const submitted = await this.entriesSheet.addRow(this.formData);
-
-      // console.log(submitted);
-      // console.log(this.formData);
       this.$router.push({ name: "Preview" });
     },
   },
@@ -356,5 +356,8 @@ label {
   font-weight: 500;
   font-size: 18px;
   color: #000000;
+}
+.reset {
+  cursor: pointer;
 }
 </style>

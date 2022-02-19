@@ -15,26 +15,28 @@
             <p class="lg">
               {{ submission.FirstName }} {{ submission.LastName }}
             </p>
-            <p class="md">{{ submission.Profession }}</p>
+            <p class="md">{{ submission.Specialization }}</p>
             <p class="md">{{ submission.Organization }}</p>
           </div>
-          <p class="light">
-            <span
-              ><img src="../assets/ic_baseline-alternate-email.svg" alt=""
-            /></span>
-            {{ submission.Email }}
-          </p>
-          <p class="light">
-            <span><img src="../assets/akar-icons_phone.svg" alt="" /></span>
-            {{ submission.Phone }}
-          </p>
+          <div class="cont">
+            <p class="light">
+              <span
+                ><img src="../assets/ic_baseline-alternate-email.svg" alt=""
+              /></span>
+              {{ submission.Email }}
+            </p>
+            <p class="light">
+              <span><img src="../assets/akar-icons_phone.svg" alt="" /></span>
+              {{ submission.Phone }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
     <div class="btns">
-      <button class="btn prim-btn" @click="submit">
+      <button class="btn prim-btn" @click="submit" :disabled="submitting">
         <span><img src="../assets/line-md_confirm-circle.svg" alt="" /></span
-        ><span>Confirm</span>
+        ><span>{{ submitting ? "Sending..." : "Confirm" }}</span>
       </button>
       <button class="btn sec-btn" @click="$router.push({ name: 'Register' })">
         <span><img src="../assets/akar-icons_edit.svg" alt="" /></span
@@ -115,24 +117,32 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import { Notyf } from "notyf";
 export default {
   name: "Preview",
   props: { entriesSheet: Object },
+  data() {
+    return { submitting: false };
+  },
   computed: {
     ...mapGetters(["submission"]),
   },
   methods: {
     ...mapActions(["submitFormData"]),
     async submit() {
+      this.submitting = true;
       try {
         const submitted = await this.entriesSheet.addRow(this.submission);
-        console.log(submitted);
-        alert("Your submission has been sent");
+        if (submitted) {
+          const notyf = new Notyf();
+          notyf.success("Submission sent");
+        }
         this.submitFormData({ Country: "Ghana" });
         this.$router.push({ name: "Home" });
       } catch (error) {
         console.log(error);
       }
+      this.submitting = false;
     },
   },
 };
@@ -140,6 +150,11 @@ export default {
 
 <style scoped>
 @media screen and (min-width: 1024px) {
+  .cont {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
   .main {
     padding: var(--y-padding) var(--x-padding) 8rem;
     min-height: 100vh;
@@ -248,7 +263,7 @@ export default {
   .preview-card {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
   .preview-card h2 {
     font-size: 20px;
@@ -262,13 +277,13 @@ export default {
     gap: 5px;
   }
   .lbl {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
   }
   .data {
     font-size: 18px;
-    padding: 10px 15px;
-    background-color: rgba(2, 119, 189, 0.1);
+    padding: 12px 20px;
+    background-color: rgba(2, 119, 189, 0.05);
     width: fit-content;
     border-radius: 8px;
   }
